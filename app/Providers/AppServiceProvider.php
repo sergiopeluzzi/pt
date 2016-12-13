@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace PopTroco\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

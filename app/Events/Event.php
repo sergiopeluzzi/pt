@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace PopTroco\Events;
 
 abstract class Event
 {
