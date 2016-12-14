@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/test', function () {
+
+    $repository = app()->make('PopTroco\Repositories\RoleRepository');
+
+    return $repository->all();
+
+});
+
+Route::get('admin/roles', 'RolesController@index');

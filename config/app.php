@@ -144,11 +144,14 @@ return [
         PopTroco\Providers\AuthServiceProvider::class,
         PopTroco\Providers\EventServiceProvider::class,
         PopTroco\Providers\RouteServiceProvider::class,
+        PopTroco\Providers\RepositoryServiceProvider::class,
 
         /*
          * Third Party Service Providers
          */
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Bestmomo\Scafold\ScafoldServiceProvider::class,
+
 
     ],
 
