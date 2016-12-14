@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
@@ -24,4 +24,8 @@ Route::get('/test', function () {
 
 });
 
-Route::get('admin/roles', 'RolesController@index');
+Route::get('admin/roles', ['as' => 'admin.roles.index', 'uses' => 'RolesController@index']);
+Route::get('admin/roles/create', ['as' => 'admin.roles.create','uses' => 'RolesController@create']);
+Route::post('admin/roles/store', ['as' => 'admin.roles.store','uses' => 'RolesController@store']);
+Route::get('admin/roles/edit/{id}', ['as' => 'admin.roles.edit','uses' => 'RolesController@edit']);
+Route::post('admin/roles/update/{id}', ['as' => 'admin.roles.update','uses' => 'RolesController@update']);
