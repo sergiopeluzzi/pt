@@ -3,9 +3,12 @@
 namespace PopTroco\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class Role extends Model
+class Role extends Model implements Transformable
 {
+    use TransformableTrait;
 
     protected $fillable = ['name'];
 
@@ -14,4 +17,5 @@ class Role extends Model
     {
         return $this->hasMany(User::class);
     }
+
 }

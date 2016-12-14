@@ -145,6 +145,11 @@ return [
         PopTroco\Providers\EventServiceProvider::class,
         PopTroco\Providers\RouteServiceProvider::class,
 
+        /*
+         * Third Party Service Providers
+         */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+
     ],
 
     /*
