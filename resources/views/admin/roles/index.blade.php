@@ -23,7 +23,8 @@
                     <td>{{ $role->id }}</td>
                     <td>{{ $role->name }}</td>
                     <td>
-                        <a href="{{ route('admin.roles.edit', ['id' => $role->id]) }}" class="btn btn-default btn-sm">Editar</a>
+                        <a href="{{ route('admin.roles.edit', ['id' => $role->id]) }}" class="btn btn-default btn-sm">Edit</a>
+                        <a href="{{ route('admin.roles.destroy', ['id' => $role->id]) }}" class="btn btn-default btn-sm">Delete</a>
                     </td>
                 </tr>
             @endforeach

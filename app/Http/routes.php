@@ -16,16 +16,31 @@ Route::get('/', function () {
 });
 
 
-Route::get('/test', function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth.checkrole', 'as' => 'admin.'], function (){
+    Route::group(['prefix' => 'roles', 'as' => 'roles.'], function (){
+        Route::get('/', ['as' => 'index', 'uses' => 'RolesController@index']);
+        Route::get('create', ['as' => 'create','uses' => 'RolesController@create']);
+        Route::get('edit/{id}', ['as' => 'edit','uses' => 'RolesController@edit']);
+        Route::post('update/{id}', ['as' => 'update','uses' => 'RolesController@update']);
+        Route::post('store', ['as' => 'store','uses' => 'RolesController@store']);
+        Route::get('destroy/{id}', ['as' => 'destroy','uses' => 'RolesController@destroy']);
+    });
 
-    $repository = app()->make('PopTroco\Repositories\RoleRepository');
+    Route::group(['prefix' => 'clients', 'as' => 'clients.'], function (){
+        Route::get('/', ['as' => 'index', 'uses' => 'ClientsController@index']);
+        Route::get('create', ['as' => 'create','uses' => 'ClientsController@create']);
+        Route::get('edit/{id}', ['as' => 'edit','uses' => 'ClientsController@edit']);
+        Route::post('update/{id}', ['as' => 'update','uses' => 'ClientsController@update']);
+        Route::post('store', ['as' => 'store','uses' => 'ClientsController@store']);
+        Route::get('destroy/{id}', ['as' => 'destroy','uses' => 'ClientsController@destroy']);
+    });
 
-    return $repository->all();
+    Route::group(['prefix' => 'transactions', 'as' => 'transactions.'], function (){
+        Route::get('/', ['as' => 'index', 'uses' => 'TransactionsController@index']);
+        Route::get('create', ['as' => 'create', 'uses' => 'TransactionsController@create']);
+        Route::post('store', ['as' => 'store', 'uses' => 'TransactionsController@store']);
+    });
+
 
 });
 
-Route::get('admin/roles', ['as' => 'admin.roles.index', 'uses' => 'RolesController@index']);
-Route::get('admin/roles/create', ['as' => 'admin.roles.create','uses' => 'RolesController@create']);
-Route::post('admin/roles/store', ['as' => 'admin.roles.store','uses' => 'RolesController@store']);
-Route::get('admin/roles/edit/{id}', ['as' => 'admin.roles.edit','uses' => 'RolesController@edit']);
-Route::post('admin/roles/update/{id}', ['as' => 'admin.roles.update','uses' => 'RolesController@update']);

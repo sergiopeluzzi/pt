@@ -29,5 +29,6 @@ class Kernel extends HttpKernel
         'auth' => \PopTroco\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \PopTroco\Http\Middleware\RedirectIfAuthenticated::class,
+        'auth.checkrole' => \PopTroco\Http\Middleware\CheckRole::class,
     ];
 }

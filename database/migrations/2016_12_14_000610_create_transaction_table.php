@@ -15,11 +15,10 @@ class CreateTransactionTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('from')->unsigned();
-            $table->foreign('from')->references('id')->on('users');
+            $table->foreign('from')->references('id')->on('clients');
             $table->integer('to')->unsigned();
-            $table->foreign('to')->references('id')->on('users');
+            $table->foreign('to')->references('id')->on('clients');
             $table->string('history');
-            $table->timestamp('date');
             $table->float('value');
             $table->timestamps();
         });

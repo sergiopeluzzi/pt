@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesTable extends Migration
+class CreateClientsTable extends Migration
 {
 
 	/**
@@ -13,9 +13,12 @@ class CreateRolesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('roles', function(Blueprint $table) {
+		Schema::create('clients', function(Blueprint $table) {
             $table->increments('id');
-
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('code')->unique();
+            $table->float('balance')->default(0.00);
             $table->timestamps();
 		});
 	}
@@ -27,7 +30,7 @@ class CreateRolesTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('roles');
+		Schema::drop('clients');
 	}
 
 }

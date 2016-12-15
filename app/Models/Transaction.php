@@ -12,14 +12,14 @@ class Transaction extends Model implements Transformable
 
     protected $fillable = ['from', 'to', 'date', 'value', 'history'];
 
-    public function from()
+    public function clientFrom()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Client::class, 'id', 'from');
     }
 
-    public function to()
+    public function clientTo()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Client::class, 'id', 'to');
     }
 
 }

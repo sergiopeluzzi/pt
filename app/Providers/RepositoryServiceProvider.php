@@ -37,5 +37,10 @@ class RepositoryServiceProvider extends ServiceProvider
             'PopTroco\Repositories\UserRepository',
             'PopTroco\Repositories\UserRepositoryEloquent'
         );
+
+        $this->app->bind(
+            'PopTroco\Repositories\ClientRepository',
+            'PopTroco\Repositories\ClientRepositoryEloquent'
+        );
     }
 }

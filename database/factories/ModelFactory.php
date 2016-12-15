@@ -11,7 +11,13 @@
 |
 */
 
-$factory->define(PopTroco\User::class, function (Faker\Generator $faker) {
+$factory->define(PopTroco\Models\Role::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});
+
+$factory->define(PopTroco\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,

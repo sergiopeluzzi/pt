@@ -55,4 +55,11 @@ class RolesController extends Controller
 
         return redirect()->route('admin.roles.index');
     }
+
+    public function destroy($id)
+    {
+        $this->repository->delete($id);
+
+        return redirect()->route('admin.roles.index');
+    }
 }
