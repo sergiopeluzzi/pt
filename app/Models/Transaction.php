@@ -10,7 +10,14 @@ class Transaction extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = ['from', 'to', 'date', 'value', 'history'];
+    protected $fillable = ['from', 'to', 'value', 'history'];
+
+    public function transform()
+    {
+        return [
+            'transaction' => $this->id
+        ];
+    }
 
     public function clientFrom()
     {

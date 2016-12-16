@@ -2,6 +2,7 @@
 
 namespace PopTroco\Repositories;
 
+use PopTroco\Presenters\TransactionPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use PopTroco\Repositories\TransactionRepository;
@@ -14,6 +15,8 @@ use PopTroco\Validators\TransactionValidator;
  */
 class TransactionRepositoryEloquent extends BaseRepository implements TransactionRepository
 {
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
@@ -32,5 +35,10 @@ class TransactionRepositoryEloquent extends BaseRepository implements Transactio
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function presenter()
+    {
+        return TransactionPresenter::class;
     }
 }

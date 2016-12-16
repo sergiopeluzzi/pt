@@ -13,6 +13,13 @@ class Client extends Model implements Transformable
 
     protected $fillable = ['user_id', 'code', 'balance'];
 
+    public function transform()
+    {
+        return [
+            'client' => $this->id
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

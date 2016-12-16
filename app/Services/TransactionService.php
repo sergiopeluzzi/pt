@@ -38,8 +38,6 @@ class TransactionService
     {
         $value = $data['value'];
 
-        $this->transactionRepository->create($data);
-
         $from = $this->clientRepository->find($data['from']);
         $from->balance -= $value;
         $from->save();
@@ -47,5 +45,19 @@ class TransactionService
         $to = $this->clientRepository->find($data['to']);
         $to->balance += $value;
         $to->save();
+
+        return $this->transactionRepository->create($data);
+    }
+
+    public function clientcreate(array $data)
+    {
+        $value = $data['value'];
+        $from = $this->clientRepository->findByField('user_id', auth()->user()->id)[0]->id;
+        $to = $this->clientRepository->findByField('code', $data['code'])[0]->id;
+        $history = 'From: ' . $this->clientRepository->find($from)->user->name . ' To: ' . $this->clientRepository->find($to)->user->name;
+
+        $save = ['from' => $from, 'to' => $to, 'value' => $value, 'history' => $history];
+
+        return $this->create($save);
     }
 }

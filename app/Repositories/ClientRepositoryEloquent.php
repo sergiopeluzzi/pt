@@ -2,6 +2,7 @@
 
 namespace PopTroco\Repositories;
 
+use PopTroco\Presenters\ClientPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use PopTroco\Repositories\ClientRepository;
@@ -14,6 +15,8 @@ use PopTroco\Validators\ClientValidator;
  */
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
 {
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
@@ -32,5 +35,10 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function presenter()
+    {
+        return ClientPresenter::class;
     }
 }

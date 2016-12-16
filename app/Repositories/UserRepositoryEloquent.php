@@ -2,6 +2,7 @@
 
 namespace PopTroco\Repositories;
 
+use PopTroco\Presenters\UserPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use PopTroco\Repositories\UserRepository;
@@ -14,6 +15,8 @@ use PopTroco\Validators\UserValidator;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
@@ -32,5 +35,11 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+
+    public function presenter()
+    {
+        return UserPresenter::class;
     }
 }

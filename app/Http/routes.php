@@ -40,7 +40,32 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.checkrole', 'as' => 'ad
         Route::get('create', ['as' => 'create', 'uses' => 'TransactionsController@create']);
         Route::post('store', ['as' => 'store', 'uses' => 'TransactionsController@store']);
     });
-
-
 });
 
+Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
+    Route::group(['prefix' => 'readqr', 'as' => 'readqr.'], function (){
+        Route::get('create', ['as' => 'create', 'uses' => 'ReadQRController@create']);
+        Route::post('store', ['as' => 'store', 'uses' => 'ReadQRController@store']);
+    });
+
+    Route::group(['prefix' => 'myqr', 'as' => 'myqr.'], function (){
+        Route::get('create', ['as' => 'create', 'uses' => 'MyQRController@create']);
+        Route::post('store', ['as' => 'store', 'uses' => 'MyQRController@store']);
+    });
+
+    Route::group(['prefix' => 'direct', 'as' => 'direct.'], function (){
+        Route::get('create', ['as' => 'create', 'uses' => 'DirectController@create']);
+        Route::post('store', ['as' => 'store', 'uses' => 'DirectController@store']);
+    });
+
+    Route::group(['prefix' => 'mytransactions', 'as' => 'mytransactions.'], function (){
+        Route::get('/', ['as' => 'index', 'uses' => 'MyTransactionsController@index']);
+    });
+});
+
+Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
+    Route::resource('mytransactions', 'Api\MyTransactionsController', ['except' => ['create', 'edit', 'destroy']]);
+    Route::resource('myqr', 'Api\MyQRController', ['except' => ['create', 'edit', 'destroy']]);
+    Route::resource('readqr', 'Api\ReadQRController', ['except' => ['create', 'edit', 'destroy']]);
+    Route::resource('direct', 'Api\DirectController', ['except' => ['create', 'edit', 'destroy']]);
+});

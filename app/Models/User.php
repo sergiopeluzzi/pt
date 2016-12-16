@@ -31,7 +31,7 @@ class User extends Model implements Transformable,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'code', 'balance', 'role_id'];
+    protected $fillable = ['name', 'email', 'password', 'role_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
