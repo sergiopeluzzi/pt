@@ -39,7 +39,7 @@
                         <li><a href="{{ route('admin.roles.index') }}">Roles</a></li>
                         <li><a href="{{ route('admin.clients.index') }}">Clients</a></li>
                         <li><a href="{{ route('admin.transactions.index') }}">Transactions</a></li>
-                    @elseif(Auth::user()->role_id == 2)
+                    @elseif(Auth::user()->role_id == 1)
                         <li><a href="{{ route('client.mytransactions.index') }}">My Transactions</a></li>
                         <li><a href="{{ route('client.myqr.create') }}">My POP QR</a></li>
                         <li><a href="{{ route('client.readqr.create') }}">Read POP QR</a></li>
