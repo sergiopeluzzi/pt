@@ -3,7 +3,12 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('starter', [
+    'ionic',
+    'starter.controllers.home',
+    'starter.controllers.login',
+    'angular-oauth2'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,9 +27,41 @@ angular.module('starter', ['ionic'])
     }
   });
 })
-.config(function ($stateProvider) {
-    $stateProvider.state('home', {
-      url: '/home',
-      templateUrl: 'templates/home.html'
-    })
+.config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider) {
+    // Configuração do OAuthProvider
+    OAuthProvider.configure({
+        //baseUrl: 'https://api.poptroco.com.br',
+        baseUrl: 'http://localhost:8000',
+        clientId: 'poptroco_public',
+        clientSecret: 'public_poptroco',
+        grantPath: '/oauth2/token'
+    });
+
+    // COnfiguração pra tornar o Token seguro
+    OAuthTokenProvider.configure({
+        name: 'token',
+        options: {
+            secure: false // false em dev, true em prod
+        }
+    });
+
+    // Configuração das rotas do front-end
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: 'templates/home.html',
+            controller: 'HomeCtrl'
+        })
+        .state('entrar', {
+            url: '/entrar',
+            templateUrl: 'templates/entrar.html',
+            controller: 'LoginCtrl'
+        })
+        .state('cadastrar', {
+            url: '/cadastrar',
+            templateUrl: 'templates/cadastrar.html',
+            controller: 'LoginCtrl'
+        });
+    // Evita erro 404. Se a rota n existir, volta pro /home ;D
+    $urlRouterProvider.otherwise('/home');
 });

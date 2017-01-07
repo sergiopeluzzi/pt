@@ -15,8 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-Route::group(['prefix' => 'admin', 'middleware' => 'auth.checkrole', 'as' => 'admin.'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth.checkrole:5', 'as' => 'admin.'], function (){
     Route::group(['prefix' => 'roles', 'as' => 'roles.'], function (){
         Route::get('/', ['as' => 'index', 'uses' => 'RolesController@index']);
         Route::get('create', ['as' => 'create','uses' => 'RolesController@create']);
@@ -42,7 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.checkrole', 'as' => 'ad
     });
 });
 
-Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
+Route::group(['prefix' => 'client', 'middleware' => 'auth.checkrole:2', 'as' => 'client.'], function () {
     Route::group(['prefix' => 'readqr', 'as' => 'readqr.'], function (){
         Route::get('create', ['as' => 'create', 'uses' => 'ReadQRController@create']);
         Route::post('store', ['as' => 'store', 'uses' => 'ReadQRController@store']);
@@ -63,9 +62,18 @@ Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
     });
 });
 
-Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
-    Route::resource('mytransactions', 'Api\MyTransactionsController', ['except' => ['create', 'edit', 'destroy']]);
-    Route::resource('myqr', 'Api\MyQRController', ['except' => ['create', 'edit', 'destroy']]);
-    Route::resource('readqr', 'Api\ReadQRController', ['except' => ['create', 'edit', 'destroy']]);
-    Route::resource('direct', 'Api\DirectController', ['except' => ['create', 'edit', 'destroy']]);
+Route::group(['middleware' => 'cors'], function (){
+    Route::post('oauth2/token', function() {
+        return Response::json(Authorizer::issueAccessToken());
+    });
+
+    Route::group(['prefix' => 'api', 'middleware' => 'oauth', 'as' => 'api.'], function () {
+        Route::group(['prefix' => 'public', 'middleware' => 'oauth.checkrole:1', 'as' => 'public.'], function () {
+            Route::resource('mytransactions', 'Api\MyTransactionsController', ['except' => ['create', 'edit', 'destroy']]);
+            Route::resource('myqr', 'Api\MyQRController', ['except' => ['create', 'edit', 'destroy']]);
+            Route::resource('readqr', 'Api\ReadQRController', ['except' => ['create', 'edit', 'destroy']]);
+            Route::resource('direct', 'Api\DirectController', ['except' => ['create', 'edit', 'destroy']]);
+        });
+    });
 });
+

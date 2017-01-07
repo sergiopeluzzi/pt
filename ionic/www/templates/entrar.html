@@ -1,0 +1,47 @@
+<ion-view>
+    <ion-nav-title>
+        POP Troco - Login
+    </ion-nav-title>
+    <ion-content class="padding">
+
+        <div class="list list-inset" align="center">
+            <a ui-sref="home">
+                <img src="../img/favicon.png" style="width: 64px; height: 64px;">
+            </a>
+        </div>
+
+        <div class="list list-inset" align="center">
+            Entrar com:
+        </div>
+
+        <div class="list list-inset" align="center">
+            <a ui-sref="home" class="button button-positive button-block">
+                <i class="icon ion-social-facebook pull-left"></i>
+                Facebook
+            </a>
+            <a ui-sref="home" class="button button-assertive button-block">
+                <i class="icon ion-social-googleplus pull-left"></i>
+                Google+
+            </a>
+        </div>
+
+        <hr>
+
+        <div class="list list-inset" align="center">
+            Ou entre com seu usuário e senha
+        </div>
+
+        <form name="formlogin" ng-submit="login()">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Usuário" ng-model="user.username">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Senha" ng-model="user.password">
+                </label>
+            </div>
+            <button type="submit" class="button button-block button-energized">Entrar</button>
+        </form>
+
+    </ion-content>
+</ion-view>

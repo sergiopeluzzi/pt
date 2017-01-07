@@ -9,11 +9,14 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <title> POP Troco &middot; </title>
+
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
+    <!--
     <link href="css/toolkit-light.css" rel="stylesheet">
     <link href="css/application.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+    -->
     <style>
         /* note: this is a hack for ios iframe for bootstrap themes shopify page */
         /* this chunk of css is not part of the toolkit :) */
@@ -45,18 +48,26 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.min.js"></script>
+    <script src="lib/query-string/query-string.js"></script>
+    <script src="lib/angular-oauth2/dist/angular-oauth2.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
+    <script src="js/controllers/home.js"></script>
+    <script src="js/controllers/login.js"></script>
     <script src="js/app.js"></script>
 </head>
 
 <body ng-app="starter" class="platform-android">
 
+<ion-nav-bar class="bar-energized"></ion-nav-bar>
+
 <ion-nav-view></ion-nav-view>
 
+<ion-footer-bar class="bar-energized"></ion-footer-bar>
 
     <!-- Preloader -->
 <!--
@@ -99,26 +110,6 @@
         })
         //]]>
     </script>
-
-
-    <ion-pane>
-        <ion-header-bar class="bar-energized">
-
-        </ion-header-bar>
-        <ion-content class="padding">
-            <p style="text-align: center"><img src="img/logo.png" style="height: 250px"></p><br>
-            <h2 class="title" align="center">Acesse ou cadastre-se no POP Troco</h2>
-            <a href="entrar.html" class="button button-large button-energized button-block" role="button">
-                <i class="icon ion-log-in pull-right"></i>
-                Entrar
-            </a>
-            <a href="cadastrar.html" class="button button-large button-block" role="button">
-                <i class="icon ion-ios-plus-outline pull-right"></i>
-                Cadastrar-me
-            </a>
-        </ion-content>
-    </ion-pane>
-
 -->
 
 </body>

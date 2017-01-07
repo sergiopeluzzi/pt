@@ -1,0 +1,47 @@
+<ion-view>
+    <ion-nav-title>
+        POP Troco - Cadastrar
+    </ion-nav-title>
+    <ion-content>
+
+        <div class="list list-inset" align="center">
+            <a ui-sref="home">
+                <img src="../img/favicon.png" style="width: 64px; height: 64px;">
+            </a>
+        </div>
+
+        <hr>
+
+        <div class="list list-inset" align="center">
+            Cadastre seu usuário e senha
+        </div>
+
+        <form name="formregister" ng-submit="registrar()">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="CPF (somente números)" ng-model="user.code">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Nome Completo" ng-model="user.name">
+                </label>
+                <label class="item item-input">
+                    <input type="email" placeholder="Email" ng-model="user.email">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Senha" ng-model="user.password">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Confirme sua Senha">
+                </label>
+            </div>
+            <button type="submit" class="button button-block button-energized">Cadastrar</button>
+        </form>
+
+        <div class="list list-inset" align="center">
+            <h6>
+                Ao cadastrar-me, declaro que aceito as <a href="#">Políticas de Privacidade</a> e os <a href="#">Termos e Condições de uso do POP Troco</a>
+            </h6>
+        </div>
+
+    </ion-content>
+</ion-view>
