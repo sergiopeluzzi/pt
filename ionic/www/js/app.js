@@ -61,6 +61,11 @@ angular.module('starter', [
             url: '/cadastrar',
             templateUrl: 'templates/cadastrar.html',
             controller: 'LoginCtrl'
+        })
+        .state('main', {
+            url: '/main',
+            templateUrl: 'templates/main.html',
+            controller: 'LoginCtrl'
         });
     // Evita erro 404. Se a rota n existir, volta pro /home ;D
     $urlRouterProvider.otherwise('/home');
