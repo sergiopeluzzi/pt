@@ -1,3 +1,4 @@
-angular.module('starter.controllers.home', []).controller('HomeCtrl', function ($scope, $state, $stateParams) {
-    $scope.state = $state.current;
+angular.module('starter.controllers')
+    .controller('HomeCtrl', function () {
+
 });

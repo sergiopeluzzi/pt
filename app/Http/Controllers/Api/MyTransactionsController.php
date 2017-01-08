@@ -10,6 +10,7 @@ namespace PopTroco\Http\Controllers\Api;
 
 
 use Illuminate\Support\Facades\Auth;
+use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 use PopTroco\Http\Controllers\Controller;
 use PopTroco\Http\Requests\TransactionRequest;
 use PopTroco\Presenters\TransactionPresenter;
@@ -43,15 +44,15 @@ class MyTransactionsController extends Controller
 
     public function index()
     {
-        $fromId = $this->userRepository->find(Auth::user()->id)->client->id;
+        $fromId = $this->userRepository->find(Authorizer::getResourceOwnerId())->client->id;
 
         $transactionsPaid = $this->transactionRepository->skipPresenter(false)->with('clientTo')->scopeQuery(function ($query) use($fromId) {
             return $query->where('from', '=', $fromId);
-        })->paginate();
+        })->all();
 
         $transactionsReceived = $this->transactionRepository->skipPresenter(false)->with(['clientFrom'])->scopeQuery(function ($query) use($fromId) {
             return $query->where('to', '=', $fromId);
-        })->paginate();
+        })->all();
 
         return [$transactionsPaid, $transactionsReceived];
     }

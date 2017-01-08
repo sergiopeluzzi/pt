@@ -1,12 +1,12 @@
 // Ionic Starter App
 
+angular.module('starter.controllers', []);
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', [
     'ionic',
-    'starter.controllers.home',
-    'starter.controllers.login',
+    'starter.controllers',
     'angular-oauth2'
 ])
 
@@ -67,6 +67,7 @@ angular.module('starter', [
             templateUrl: 'templates/main.html',
             controller: 'LoginCtrl'
         })
+
         // Rota abstrata (agrupamento de rotas do usuário)
         .state('user', {
             abstract: true,
