@@ -68,7 +68,7 @@ Route::group(['middleware' => 'cors'], function (){
     });
 
     Route::group(['prefix' => 'api', 'middleware' => 'oauth', 'as' => 'api.'], function () {
-        Route::group(['prefix' => 'public', 'middleware' => 'oauth.checkrole:2', 'as' => 'public.'], function () {
+        Route::group(['prefix' => 'public', 'middleware' => 'oauth.checkrole:1', 'as' => 'public.'], function () {
             Route::resource('mytransactions', 'Api\MyTransactionsController', ['except' => ['create', 'edit', 'destroy']]);
             Route::resource('myqr', 'Api\MyQRController', ['except' => ['create', 'edit', 'destroy']]);
             Route::resource('readqr', 'Api\ReadQRController', ['except' => ['create', 'edit', 'destroy']]);

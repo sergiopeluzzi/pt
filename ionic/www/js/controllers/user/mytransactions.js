@@ -4,4 +4,6 @@ angular.module('starter.controllers')
 
             var transaction = $resource(appConfig.baseUrl + '/api/public/mytransactions');
 
+            transaction.query();
+
         }]);
