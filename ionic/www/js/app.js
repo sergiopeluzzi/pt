@@ -72,6 +72,26 @@ angular.module('starter', [
             abstract: true,
             url: '/user',
             template: '<ui-view/>'
+        })
+        .state('user.mytransactions', {
+            url: '/mytransactions',
+            templateUrl: 'templates/user/mytransactions.html',
+            controller: 'UserMyTransactionsCtrl'
+        })
+        .state('user.myqrcode', {
+            url: '/myqrcode',
+            templateUrl: 'templates/user/myqrcode.html',
+            controller: 'UserMyQrCodeCtrl'
+        })
+        .state('user.readqrcode', {
+            url: '/readqrcode',
+            templateUrl: 'templates/user/readqrcode.html',
+            controller: 'UserReadQrCodeCtrl'
+        })
+        .state('user.direct', {
+            url: '/direct',
+            templateUrl: 'templates/user/direct.html',
+            controller: 'UserDirectCtrl'
         });
     // Evita erro 404. Se a rota n existir, volta pro /home ;D
     $urlRouterProvider.otherwise('/home');
