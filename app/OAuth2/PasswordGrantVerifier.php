@@ -15,7 +15,7 @@ class PasswordGrantVerifier
     public function verify($username, $password)
     {
         $credentials = [
-            'code'    => $username,
+            'client.code'    => $username,
             'password' => $password,
         ];
 
