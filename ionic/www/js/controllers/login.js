@@ -12,12 +12,13 @@ angular.module('starter.controllers.login', [])
             }, function (responseError) {
                 $ionicPopup.alert({
                     title: 'Advertencia!',
-                    template: '<b>Login e/ou Senha inválidos!</b>'
+                    template: 'Login e/ou Senha inválidos!'
                 });
             });
         };
 
         $scope.registrar = function () {
-            alert('Registro efetuado com sucesso');
+            var message = 'Registro efetuado com sucesso';
+            alert(message);
         }
     }]);
