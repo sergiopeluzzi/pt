@@ -31,7 +31,7 @@ angular.module('starter', [
     // Configuração do OAuthProvider
     OAuthProvider.configure({
         //baseUrl: 'https://api.poptroco.com.br',
-        baseUrl: 'http://localhost:8000',
+        baseUrl: 'http://api.poptroco.com.br',
         clientId: 'poptroco_public',
         clientSecret: 'public_poptroco',
         grantPath: '/oauth2/token'
@@ -66,6 +66,12 @@ angular.module('starter', [
             url: '/main',
             templateUrl: 'templates/main.html',
             controller: 'LoginCtrl'
+        })
+        // Rota abstrata (agrupamento de rotas do usuário)
+        .state('user', {
+            abstract: true,
+            url: '/user',
+            template: '<ui-view/>'
         });
     // Evita erro 404. Se a rota n existir, volta pro /home ;D
     $urlRouterProvider.otherwise('/home');
