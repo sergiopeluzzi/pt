@@ -7,8 +7,12 @@ angular.module('starter.controllers', []);
 angular.module('starter', [
     'ionic',
     'starter.controllers',
-    'angular-oauth2'
+    'angular-oauth2',
+    'ngResource'
 ])
+.constant('appConfig', {
+    baseUrl: 'http://api.poptroco.com.br'
+})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,11 +31,10 @@ angular.module('starter', [
     }
   });
 })
-.config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider) {
+.config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider, appConfig) {
     // Configuração do OAuthProvider
     OAuthProvider.configure({
-        //baseUrl: 'https://api.poptroco.com.br',
-        baseUrl: 'http://api.poptroco.com.br',
+        baseUrl: appConfig.baseUrl,
         clientId: 'poptroco_public',
         clientSecret: 'public_poptroco',
         grantPath: '/oauth2/token'
