@@ -54,7 +54,7 @@ class MyTransactionsController extends Controller
             return $query->where('to', '=', $fromId);
         })->all();
 
-        return [$transactionsPaid, $transactionsReceived];
+        return ['Negativo' => $transactionsPaid, 'Positivo' => $transactionsReceived];
     }
 
     public function show($id)

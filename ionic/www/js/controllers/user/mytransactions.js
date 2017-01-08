@@ -1,9 +1,10 @@
 angular.module('starter.controllers')
     .controller('UserMyTransactionsCtrl', [
-        '$scope', '$state', 'appConfig', '$resource', function ($scope, $state, appConfig, $resource) {
+        '$scope', '$state', 'MyTransaction', function ($scope, $state, MyTransaction) {
 
-            var transaction = $resource(appConfig.baseUrl + '/api/public/mytransactions');
-
-            transaction.query();
+            MyTransaction.query({}, function (data) {
+                console.log('Mostrando Transações');
+                console.log(data);
+            });
 
         }]);
