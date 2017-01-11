@@ -1,5 +1,51 @@
 <ion-view>
-    <ion-content>
-        My Transactions
+    <ion-nav-title>
+        POP Transações
+    </ion-nav-title>
+    <div class="bar bar-subheader">
+        <h2 class="title">Saldo: {{  }}</h2>
+    </div>
+    <ion-content class="padding has-subheader">
+
+        <div class="list">
+            <div class="item item-avatar" ng-repeat="o in transacoes">
+                <img src="../../img/icor.png" ng-if="false">
+                <img src="../../img/icov.png" ng-if="true">
+                <h2>R$ {{ o.value }}</h2>
+                <h3 ng-if="false">{{ o.clientTo.data.code }} - {{ o.clientTo.data.user.data.name }}</h3>
+                <h3 ng-if="true">{{ o.clientTo.data.code }} - {{ o.clientTo.data.user.data.name }}</h3ng-if>
+                <p>{{ o.created_at.date }}</p>
+            </div>
+        </div>
+
+
+        <!--
+        <ion-list>
+            <ion-item class="item-divider">
+                Negativas
+            </ion-item>
+            <ion-item ng-repeat="o in tnegativas">
+                <ion-avatar item-left>
+
+                </ion-avatar>
+                <h2>{{ o.clientTo.data.code }} - {{ o.clientTo.data.user.data.name }}</h2>
+                <h3>R$ {{ o.value }}</h3>
+                <p>Data: {{ o.created_at.date }}</p>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item class="item-divider">
+                Positivas
+            </ion-item>
+            <ion-item ng-repeat="o in tpositivas">
+                <h2> Cod: {{ o.id }}</h2>
+                <h3>Favorecido: {{ o.clientFrom.data.code }} - {{ o.clientFrom.data.user.data.name }}</h3>
+                <p>Data: {{ o.created_at.date }}</p>
+                <span class="item-note pull-right">
+                    <i class="ion ion-cash">{{ o.value }}</i>
+                </span>
+            </ion-item>
+        </ion-list>
+        -->
     </ion-content>
 </ion-view>

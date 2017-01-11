@@ -1,5 +1,21 @@
 <ion-view>
+    <ion-nav-title>
+        POP Direct
+    </ion-nav-title>
     <ion-content>
-        Direct
+        <form name="formdirect" ng-submit="direct()">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Favorecido" ng-model="user.code">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Nome Completo" ng-model="user.name">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Valor" ng-model="user.email">
+                </label>
+            </div>
+            <button type="submit" class="button button-block button-energized">Pagar</button>
+        </form>
     </ion-content>
 </ion-view>

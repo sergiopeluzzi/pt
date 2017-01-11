@@ -14,7 +14,8 @@ angular.module('starter', [
 
 ])
 .constant('appConfig', {
-    baseUrl: 'http://api.poptroco.com.br'
+    //baseUrl: 'http://api.poptroco.com.br'
+    baseUrl: 'http://localhost:8000'
 })
 
 .run(function($ionicPlatform) {
@@ -78,7 +79,7 @@ angular.module('starter', [
         .state('user', {
             abstract: true,
             url: '/user',
-            template: '<ui-view/>'
+            template: '<ion-nav-view/>'
         })
         .state('user.mytransactions', {
             url: '/mytransactions',
