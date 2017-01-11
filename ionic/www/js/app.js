@@ -10,12 +10,13 @@ angular.module('starter', [
     'starter.controllers',
     'starter.services',
     'angular-oauth2',
-    'ngResource'
+    'ngResource',
+    'ngCordova'
 
 ])
 .constant('appConfig', {
-    //baseUrl: 'http://api.poptroco.com.br'
-    baseUrl: 'http://localhost:8000'
+    baseUrl: 'http://api.poptroco.com.br'
+    //baseUrl: 'http://localhost:8000'
 })
 
 .run(function($ionicPlatform) {
