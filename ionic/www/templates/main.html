@@ -1,8 +1,33 @@
 <ion-view>
-    <ion-nav-title>Main</ion-nav-title>
+    <ion-nav-title>Início</ion-nav-title>
     <ion-content class="padding">
-        <div class="list list-inset" align="center">
-            <img src="../img/logo.png" height="500px">
+        <div class="list card">
+            <div class="item item-avatar">
+                <img src="../img/user.png">
+                <h2>Marty McFly</h2>
+                <p>11122233345</p>
+            </div>
+
+            <div class="item item-body" align="center">
+                <small>Saldo</small>
+                <h3>R$ 0,00</h3>
+            </div>
+            <a class="button button-block" ui-sref="home">
+                <i class="icon ion-home pull-left"></i>
+                Início
+            </a>
+            <a class="button button-block" ui-sref="user.mytransactions">
+                <i class="icon ion-android-list pull-left"></i>
+                Extrato
+            </a>
+            <a class="button button-block" ui-sref="facilitar">
+                <i class="icon ion-arrow-swap pull-left"></i>
+                Facilitar Troco
+            </a>
+            <a class="button button-block" ui-sref="home">
+                <i class="icon ion-android-exit pull-left"></i>
+                Sair
+            </a>
         </div>
     </ion-content>
 </ion-view>

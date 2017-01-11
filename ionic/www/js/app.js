@@ -74,6 +74,11 @@ angular.module('starter', [
             templateUrl: 'templates/main.html',
             controller: 'LoginCtrl'
         })
+        .state('facilitar', {
+            url: '/facilitar',
+            templateUrl: 'templates/facilitar.html',
+            controller: 'LoginCtrl'
+        })
 
         // Rota abstrata (agrupamento de rotas do usuário)
         .state('user', {

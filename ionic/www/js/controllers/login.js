@@ -8,7 +8,7 @@ angular.module('starter.controllers')
 
         $scope.login = function () {
             OAuth.getAccessToken($scope.user).then(function (data) {
-                $state.go('user.mytransactions');
+                $state.go('main');
             }, function (responseError) {
                 $ionicPopup.alert({
                     title: 'Advertencia!',
